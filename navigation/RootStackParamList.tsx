@@ -1,9 +1,10 @@
+
 type RootStackParamList = {
     HomeScreen: undefined;
     CitySearch: undefined;
     CountrySearch: undefined;
     City: undefined;
-    Country: undefined;
+    CountryResult: {cityList: Array<Object>};
 };
 
 
