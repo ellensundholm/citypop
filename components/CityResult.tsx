@@ -1,16 +1,14 @@
 import React from 'react'
 import { View, StyleSheet, Text } from 'react-native'
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../navigation/RootStackParamList'
 import Title from './Title';
+import { CityResultProps } from '../types/types';
+import { Colors } from '../styles/colors';
 
 /**
  * Component for the page for the result after searching a city. The population of this city will appear.
  */
 
-type Props = NativeStackScreenProps<RootStackParamList, 'CityResult'>;
-
-export default function CityResult({ route, navigation }: Props) {
+export default function CityResult({ route, navigation }: CityResultProps) {
 
     /* Method for converting a number to a string with space as thousand separator. */
     const spaceSeparator = (num: number) => {
@@ -33,12 +31,12 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         paddingHorizontal: 15,
-        backgroundColor: "#8FBC8F",
+        backgroundColor: Colors.primary,
     },
     populationContainer: {
         alignItems: "center",
         borderWidth: 1,
-        borderColor: "#2F4F4F",
+        borderColor: Colors.secondary,
         padding: 5
     },
     populationText: {
@@ -47,7 +45,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
     },
     textColor: {
-        color: "#2F4F4F"
+        color: Colors.secondary
     }
 });
 

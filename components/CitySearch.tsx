@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { StyleSheet, View, ActivityIndicator } from 'react-native'
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../navigation/RootStackParamList';
 import Title from './Title';
 import Search from './Search';
+import { CitySearchProps } from '../types/types';
+import { Colors } from '../styles/colors';
 
 /**
  * Component for the page for searching for a city. 
@@ -12,9 +12,7 @@ import Search from './Search';
  * navigation: NativeStackNavigationProp<RootStackParamList, "CitySearch">
  */
 
-type Props = NativeStackScreenProps<RootStackParamList, 'CitySearch'>;
-
-export default function CitySearch({route, navigation}: Props) {
+export default function CitySearch({route, navigation}: CitySearchProps) {
     
     const [searching, setSearching] = useState(false);
     const [incorrectCity, setIncorrectCity] = useState(false);
@@ -68,6 +66,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         paddingHorizontal: 15,
-        backgroundColor: "#8FBC8F",
+        backgroundColor: Colors.primary,
     },
 });

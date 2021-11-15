@@ -1,9 +1,9 @@
 import React from 'react'
-import { StyleSheet, View, Text, } from 'react-native'
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../navigation/RootStackParamList'
+import { StyleSheet, View } from 'react-native'
 import CityList from './CityList';
 import Title from './Title';
+import { CountryResultProps } from '../types/types';
+import { Colors } from '../styles/colors';
 
 /**
 * Component for the page for the result after searching a country. The largest cities of this country will appear. 
@@ -12,16 +12,14 @@ import Title from './Title';
 * navigation: NativeStackNavigationProp<RootStackParamList, "CountryResult">
 */
 
-type Props = NativeStackScreenProps<RootStackParamList, 'CountryResult'>;
-
-export default function CountryResult({ route, navigation }: Props) {
+export default function CountryResult({ route, navigation }: CountryResultProps) {
     /**
     * Function for navigating to the CityResult component when a city button in CityList is pressed.
-    */ 
+    */
     const navigateToCity = (city: string, population: number) => {
-        navigation.navigate('CityResult', {city: city, population: population})
+        navigation.navigate('CityResult', { city: city, population: population })
     }
-    
+
     return (
         <View style={styles.container}>
             <Title title={route.params.country}></Title>
@@ -35,6 +33,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         paddingHorizontal: 15,
-        backgroundColor: "#8FBC8F",
+        backgroundColor: Colors.primary,
     },
 });

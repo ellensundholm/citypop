@@ -1,5 +1,7 @@
 import React from 'react'
 import { StyleSheet, View, Text } from 'react-native'
+import { Colors } from '../styles/colors';
+import { TitleProps } from '../types/types';
 
 /* 
 Component for the title of the different pages.
@@ -7,10 +9,7 @@ Props:
 title: string
 */
 
-type Props = {
-    title: string
-}
-export default function Title({title}: Props) {
+export default function Title({title}: TitleProps) {
     return (
         <View style={styles.titleContainer}>
             <Text style={styles.title}>{title}</Text>
@@ -28,7 +27,7 @@ const styles = StyleSheet.create({
     title: {
         fontWeight: "bold",
         fontSize: 35,
-        color: "#2F4F4F",
+        color: Colors.secondary,
         textAlign: "center"
     }
 });

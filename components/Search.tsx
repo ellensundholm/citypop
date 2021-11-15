@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { StyleSheet, View, Text, TextInput } from 'react-native'
+import { Colors } from '../styles/colors';
+import { SearchProps } from '../types/types';
 import SearchButton from './SearchButton';
 
 /* 
@@ -12,15 +14,7 @@ import SearchButton from './SearchButton';
 * setIncorrectInput: setter for incorrectInput  ((b: boolean) => void)
 */
 
-type Props = {
-    incorrectInput: boolean,
-    placeholder: string,
-    incorrectText: string,
-    search: (input: string) => void,
-    setIncorrectInput: (b: boolean) => void
-}
-
-export default function Search({ incorrectInput, placeholder, incorrectText, search, setIncorrectInput }: Props) {
+export default function Search({ incorrectInput, placeholder, incorrectText, search, setIncorrectInput }: SearchProps) {
 
     const [input, setInput] = useState("");
 
@@ -55,18 +49,18 @@ export default function Search({ incorrectInput, placeholder, incorrectText, sea
 const styles = StyleSheet.create({
 
     textinput: {
-        backgroundColor: "#ffff",
+        backgroundColor: Colors.textInputBackground,
         padding: 10,
         width: "100%",
         textAlign: "center",
     },
     textinputContainer: {
         alignItems: "center",
-        borderColor: "#2F4F4F",
+        borderColor: Colors.secondary,
         borderWidth: 1
     },
     incorrectText: {
-        color: "#8b0000",
+        color: Colors.error,
         textAlign: "center"
     }
 });

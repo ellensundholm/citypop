@@ -1,5 +1,4 @@
-import { CityData } from '../components/CityList'
-
+import { CityData } from "../types/types";
 
 type RootStackParamList = {
     HomeScreen: undefined;
@@ -8,6 +7,5 @@ type RootStackParamList = {
     CityResult: { city: string, population: number};
     CountryResult: { cityList: Array<CityData>, country: string};
 };
-
 
 export { RootStackParamList };

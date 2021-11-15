@@ -1,29 +1,24 @@
 import React, { useState } from 'react'
-import { StyleSheet, View, Text, TextInput, ActivityIndicator } from 'react-native'
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../navigation/RootStackParamList';
-
+import { StyleSheet, View, ActivityIndicator } from 'react-native'
 import Title from './Title';
-import SearchButton from './SearchButton';
+import Search from './Search';
+import { CountrySearchProps } from '../types/types';
+import { Colors } from '../styles/colors';
 
 /**
  * Component for the page for searching for a country. Here you can enter a country name and search.
  */
 
-type Props = NativeStackScreenProps<RootStackParamList, 'CountrySearch'>;
+export default function CountrySearch({ route, navigation }: CountrySearchProps) {
 
-export default function CountrySearch({ route, navigation }: Props) {
-
-    const [countryInput, setCountryInput] = useState("");
     const [searching, setSearching] = useState(false);
     const [incorrectCountry, setIncorrectCountry] = useState(false);
     const { getCode } = require('country-list');
 
-
     /* 
     * Method for saerching for a country using geonames api based on input country name.
     */
-    const searchCountry = () => {
+    const searchCountry = (countryInput: string) => {
 
         setSearching(true)
         const code: string = getCode(countryInput)
@@ -42,7 +37,6 @@ export default function CountrySearch({ route, navigation }: Props) {
                 // TODO: Error-handling.
                 console.log(error)
             })
-        setCountryInput("")
     }
 
     return (
@@ -53,23 +47,13 @@ export default function CountrySearch({ route, navigation }: Props) {
                     <ActivityIndicator color="#2F4F4F" />
                 </View>
                 :
-                <View>
-                    <View style={styles.textinputContainer}>
-                        <TextInput value={countryInput}
-                            onChangeText={(text) => {
-                                setCountryInput(text)
-                                setIncorrectCountry(false)
-                            }}
-                            style={styles.textinput}
-                            placeholder="Enter a country" />
-                    </View>
-                    <SearchButton onPress={searchCountry} />
-                    {incorrectCountry ?
-                        <Text style={styles.incorrectText}>Incorrect input, not a valid country. Try writing the ISO country name.</Text>
-                        :
-                        <View />
-                    }
-                </View>
+                <Search
+                    placeholder="Enter a country"
+                    incorrectInput={incorrectCountry}
+                    incorrectText="Incorrect input, not a valid country. Try writing the ISO country name."
+                    search={searchCountry}
+                    setIncorrectInput={setIncorrectCountry}
+                />
             }
         </View>
     )
@@ -80,21 +64,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         paddingHorizontal: 15,
-        backgroundColor: "#8FBC8F",
+        backgroundColor: Colors.primary,
     },
-    textinput: {
-        backgroundColor: "#ffff",
-        padding: 10,
-        width: "100%",
-        textAlign: "center",
-    },
-    textinputContainer: {
-        alignItems: "center",
-        borderColor: "#2F4F4F",
-        borderWidth: 1
-    },
-    incorrectText: {
-        color: "#8b0000",
-        textAlign: "center"
-    }
 });
