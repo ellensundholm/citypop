@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, TouchableOpacity, TextInput, ActivityIndicator 
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/RootStackParamList';
 import { Icon } from 'react-native-elements';
+import Title from './Title';
 
 /**
  * Component for the page for searching for a country. Here you can enter a country name and search.
@@ -12,7 +13,7 @@ type Props = NativeStackScreenProps<RootStackParamList, 'CountrySearch'>;
 
 export default function CountrySearch({ route, navigation }: Props) {
 
-    const [countryInput, setCountryInput] = useState<string | undefined>(undefined);
+    const [countryInput, setCountryInput] = useState("");
     const [searching, setSearching] = useState(false);
     const [incorrectCountry, setIncorrectCountry] = useState(false);
     const { getCode } = require('country-list');
@@ -37,14 +38,12 @@ export default function CountrySearch({ route, navigation }: Props) {
                 // TODO: Error-handling.
                 console.log(error)
             })
-        setCountryInput(undefined)
+        setCountryInput("")
     }
 
     return (
         <View style={styles.container}>
-            <View style={styles.titleContainer}>
-                <Text style={styles.text}>SEARCH BY COUNTRY</Text>
-            </View>
+            <Title title="SEARCH BY COUNTRY"></Title>
             {searching ?
                 <View style={styles.container}>
                     <ActivityIndicator color="#2F4F4F" />

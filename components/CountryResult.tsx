@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, } from 'react-native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/RootStackParamList'
 import CityList from './CityList';
+import Title from './Title';
 
 /**
 * Component for the page for the result after searching a country. The largest cities of this country will appear. 
@@ -23,9 +24,7 @@ export default function CountryResult({ route, navigation }: Props) {
     
     return (
         <View style={styles.container}>
-            <View style={styles.titleContainer}>
-                <Text style={styles.text}>{route.params.country?.toUpperCase()}</Text>
-            </View>
+            <Title title={route.params.country}></Title>
             <CityList cityList={route.params.cityList} toCity={navigateToCity}></CityList>
         </View>
     )
