@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         margin: 5,
     },
     listText: {
-        color: Colors.primary,
+        color: Colors.buttonText,
         textAlign: "center",
         fontSize: 20,
     },
