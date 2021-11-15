@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, FlatList, ListRenderItem, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, FlatList, ListRenderItem, TouchableHighlight } from 'react-native'
 import { Colors } from '../styles/colors';
 import { CityData, CityListProps } from '../types/types';
 
@@ -13,11 +13,12 @@ import { CityData, CityListProps } from '../types/types';
 export default function CityList({ cityList, toCity }: CityListProps) {
 
     const renderCityItem: ListRenderItem<CityData> = ({ item }) => (
-        <TouchableOpacity
+        <TouchableHighlight
+            underlayColor={Colors.buttonUnderlay}
             style={styles.button}
             onPress={() => toCity(item.name, item.population)}>
             <Text style={styles.listText}>{item.name}</Text>
-        </TouchableOpacity>
+        </TouchableHighlight>
     );
 
     return (

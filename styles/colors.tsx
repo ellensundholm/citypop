@@ -4,5 +4,6 @@ export const Colors = {
     error: "#8b0000",
     textInputBackground: "#ffff",
     buttonText: "#ffff",
+    buttonUnderlay: "#4d8080"
 
   };

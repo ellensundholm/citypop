@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { Text, StyleSheet, TouchableHighlight } from 'react-native'
 import { Colors } from '../styles/colors';
 import { HomeScreenButtonProps } from '../types/types';
 
@@ -11,13 +11,14 @@ navigate: function for navigating to new screen ((endpoint: keyof RootStackParam
 endpoint: screen to navigate to (string)
 */
 
-export default function HomeScreenButton({text, navigate, endpoint}: HomeScreenButtonProps) {
+export default function HomeScreenButton({ text, navigate, endpoint }: HomeScreenButtonProps) {
     return (
-        <TouchableOpacity
-                style={styles.button}
-                onPress={() => navigate(endpoint)}>
-                <Text style={styles.buttonText}>{text}</Text>
-        </TouchableOpacity>
+        <TouchableHighlight
+            underlayColor={Colors.buttonUnderlay}
+            style={styles.button}
+            onPress={() => navigate(endpoint)}>
+            <Text style={styles.buttonText}>{text}</Text>
+        </TouchableHighlight>
     )
 }
 const styles = StyleSheet.create({
@@ -27,7 +28,6 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.secondary,
         padding: 15,
         margin: 5,
-
     },
     buttonText: {
         fontWeight: "bold",
