@@ -1,5 +1,6 @@
 import React from 'react'
 import { Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { Colors } from '../styles/colors';
 import { HomeScreenButtonProps } from '../types/types';
 
 /* 
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
 
     button: {
         alignItems: "center",
-        backgroundColor: "#2F4F4F",
+        backgroundColor: Colors.secondary,
         padding: 15,
         margin: 5,
 

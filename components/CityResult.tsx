@@ -2,6 +2,7 @@ import React from 'react'
 import { View, StyleSheet, Text } from 'react-native'
 import Title from './Title';
 import { CityResultProps } from '../types/types';
+import { Colors } from '../styles/colors';
 
 /**
  * Component for the page for the result after searching a city. The population of this city will appear.
@@ -30,12 +31,12 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         paddingHorizontal: 15,
-        backgroundColor: "#8FBC8F",
+        backgroundColor: Colors.primary,
     },
     populationContainer: {
         alignItems: "center",
         borderWidth: 1,
-        borderColor: "#2F4F4F",
+        borderColor: Colors.secondary,
         padding: 5
     },
     populationText: {
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
     },
     textColor: {
-        color: "#2F4F4F"
+        color: Colors.secondary
     }
 });
 

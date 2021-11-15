@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet, View, Text } from 'react-native'
+import { Colors } from '../styles/colors';
 import { TitleProps } from '../types/types';
 
 /* 
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
     title: {
         fontWeight: "bold",
         fontSize: 35,
-        color: "#2F4F4F",
+        color: Colors.secondary,
         textAlign: "center"
     }
 });

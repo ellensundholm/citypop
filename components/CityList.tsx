@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, FlatList, ListRenderItem, TouchableOpacity } from 'react-native'
+import { Colors } from '../styles/colors';
 import { CityData, CityListProps } from '../types/types';
 
 /* 
@@ -36,12 +37,12 @@ const styles = StyleSheet.create({
     },
     button: {
         alignItems: "center",
-        backgroundColor: "#2F4F4F",
+        backgroundColor: Colors.secondary,
         padding: 15,
         margin: 5,
     },
     listText: {
-        color: "#8FBC8F",
+        color: Colors.primary,
         textAlign: "center",
         fontSize: 20,
     },

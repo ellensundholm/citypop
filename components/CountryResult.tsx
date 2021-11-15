@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native'
 import CityList from './CityList';
 import Title from './Title';
 import { CountryResultProps } from '../types/types';
+import { Colors } from '../styles/colors';
 
 /**
 * Component for the page for the result after searching a country. The largest cities of this country will appear. 
@@ -32,6 +33,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         paddingHorizontal: 15,
-        backgroundColor: "#8FBC8F",
+        backgroundColor: Colors.primary,
     },
 });

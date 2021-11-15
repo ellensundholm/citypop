@@ -7,6 +7,7 @@ import CountrySearch from './components/CountrySearch';
 import CityResult from './components/CityResult';
 import CountryResult from './components/CountryResult';
 import { RootStackParamList } from './navigation/RootStackParamList'
+import { Colors } from './styles/colors';
 
 /**
  * The app-component, the navigation and different screens located here.
@@ -20,10 +21,10 @@ export default function App() {
       <Stack.Navigator
         screenOptions={{
           headerStyle: {
-            backgroundColor: "#8FBC8F",
+            backgroundColor: Colors.primary,
           },
           headerShadowVisible: false,
-          headerTintColor: "#2F4F4F",
+          headerTintColor: Colors.secondary,
           headerTitleStyle: {
             fontWeight: 'bold',
           },
@@ -37,5 +38,4 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
 

@@ -3,6 +3,7 @@ import { StyleSheet, View, ActivityIndicator } from 'react-native'
 import Title from './Title';
 import Search from './Search';
 import { CountrySearchProps } from '../types/types';
+import { Colors } from '../styles/colors';
 
 /**
  * Component for the page for searching for a country. Here you can enter a country name and search.
@@ -63,6 +64,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         paddingHorizontal: 15,
-        backgroundColor: "#8FBC8F",
+        backgroundColor: Colors.primary,
     },
 });

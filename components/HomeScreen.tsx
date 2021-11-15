@@ -4,6 +4,7 @@ import { RootStackParamList } from '../navigation/RootStackParamList'
 import Title from './Title'
 import HomeScreenButton from './HomeScreenButton';
 import { HomeScreenProps } from '../types/types';
+import { Colors } from '../styles/colors';
 
 /**
  * Component for the homescreen of citypop. Here you can choose to search on city or country.
@@ -42,6 +43,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         paddingHorizontal: 15,
-        backgroundColor: "#8FBC8F",
+        backgroundColor: Colors.primary,
     }
 });
