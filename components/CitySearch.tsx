@@ -1,18 +1,75 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React, { useState } from 'react'
+import { StyleSheet, View, Text, TextInput, ActivityIndicator } from 'react-native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import {RootStackParamList} from '../navigation/RootStackParamList'
+import { RootStackParamList } from '../navigation/RootStackParamList';
+
+import Title from './Title';
+import SearchButton from './SearchButton';
+import Search from './Search';
 
 /**
- * Component for the page for searching for a city. Here you can enter a city name and search.
+ * Component for the page for searching for a city. 
+ * Props:
+ * route: RouteProp<RootStackParamList, "CitySearch">
+ * navigation: NativeStackNavigationProp<RootStackParamList, "CitySearch">
  */
 
 type Props = NativeStackScreenProps<RootStackParamList, 'CitySearch'>;
 
 export default function CitySearch({route, navigation}: Props) {
+    
+    const [searching, setSearching] = useState(false);
+    const [incorrectCity, setIncorrectCity] = useState(false);
+
+    /* 
+    * Method for saerching for a city using geonames api based on input city name.
+    * cityInput: the name of the city to search for (string)
+    */
+    const searchCity = (cityInput: string) => {
+
+        setSearching(true)
+
+        fetch(`http://api.geonames.org/searchJSON?name_equals=${cityInput}&featureClass=p&username=weknowit`)
+            .then(response => response.json())
+            .then(json => {
+                if (json.geonames.length == 0) {
+                    setIncorrectCity(true);
+                } else {
+                    navigation.navigate('CityResult', { city: json.geonames[0].name, population: json.geonames[0].population })
+                }
+                setSearching(false)
+            })
+            .catch(error => {
+                // TODO: Error-handling.
+                console.log(error)
+            })
+    }
+
     return (
-        <View>
-            <Text>CitySearch</Text>
+        <View style={styles.container}>
+            <Title title="SEARCH BY CITY"></Title>
+            {searching ?
+                <View style={styles.container}>
+                    <ActivityIndicator color="#2F4F4F" />
+                </View>
+                :
+                <Search 
+                incorrectInput={incorrectCity}
+                placeholder="Enter a city"
+                incorrectText="Incorrect input, not a valid city. Try writing the ISO city name."
+                search={searchCity}
+                setIncorrectInput={setIncorrectCity}
+                />
+            }
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: "center",
+        paddingHorizontal: 15,
+        backgroundColor: "#8FBC8F",
+    },
+});
