@@ -1,16 +1,13 @@
 import React from 'react'
 import { View, StyleSheet, Text } from 'react-native'
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../navigation/RootStackParamList'
 import Title from './Title';
+import { CityResultProps } from '../types/types';
 
 /**
  * Component for the page for the result after searching a city. The population of this city will appear.
  */
 
-type Props = NativeStackScreenProps<RootStackParamList, 'CityResult'>;
-
-export default function CityResult({ route, navigation }: Props) {
+export default function CityResult({ route, navigation }: CityResultProps) {
 
     /* Method for converting a number to a string with space as thousand separator. */
     const spaceSeparator = (num: number) => {

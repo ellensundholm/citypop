@@ -1,17 +1,16 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/RootStackParamList'
 import Title from './Title'
 import HomeScreenButton from './HomeScreenButton';
+import { HomeScreenProps } from '../types/types';
 
 /**
  * Component for the homescreen of citypop. Here you can choose to search on city or country.
  */
 
-type Props = NativeStackScreenProps<RootStackParamList, 'HomeScreen'>;
 
-export default function HomeScreen({ route, navigation }: Props) {
+export default function HomeScreen({ route, navigation }: HomeScreenProps) {
 
     /* 
      * Function for navigating to new screen based on which button pressed.

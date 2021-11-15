@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { StyleSheet, View, Text, TextInput } from 'react-native'
+import { SearchProps } from '../types/types';
 import SearchButton from './SearchButton';
 
 /* 
@@ -12,15 +13,7 @@ import SearchButton from './SearchButton';
 * setIncorrectInput: setter for incorrectInput  ((b: boolean) => void)
 */
 
-type Props = {
-    incorrectInput: boolean,
-    placeholder: string,
-    incorrectText: string,
-    search: (input: string) => void,
-    setIncorrectInput: (b: boolean) => void
-}
-
-export default function Search({ incorrectInput, placeholder, incorrectText, search, setIncorrectInput }: Props) {
+export default function Search({ incorrectInput, placeholder, incorrectText, search, setIncorrectInput }: SearchProps) {
 
     const [input, setInput] = useState("");
 

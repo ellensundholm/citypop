@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, FlatList, ListRenderItem, TouchableOpacity } from 'react-native'
+import { CityData, CityListProps } from '../types/types';
 
 /* 
 * Component for the list of cities when the user searched a country.
@@ -8,17 +9,7 @@ import { StyleSheet, Text, FlatList, ListRenderItem, TouchableOpacity } from 're
 * toCity: (city: string, population: number) => void
 */
 
-export type CityData = {
-    name: string,
-    population: number
-};
-
-type Props = {
-    cityList: Array<CityData>,
-    toCity: (city: string, population: number) => void
-};
-
-export default function CityList({ cityList, toCity }: Props) {
+export default function CityList({ cityList, toCity }: CityListProps) {
 
     const renderCityItem: ListRenderItem<CityData> = ({ item }) => (
         <TouchableOpacity

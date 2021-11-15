@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text, TouchableOpacity, StyleSheet } from 'react-native'
-import { RootStackParamList } from '../navigation/RootStackParamList';
+import { HomeScreenButtonProps } from '../types/types';
 
 /* 
 Component for the HomeScreenButton.
@@ -10,14 +10,7 @@ navigate: function for navigating to new screen ((endpoint: keyof RootStackParam
 endpoint: screen to navigate to (string)
 */
 
-
-type Props = {
-    text: string,
-    endpoint: keyof RootStackParamList,
-    navigate: (endpoint: keyof RootStackParamList) => void
-}
-
-export default function HomeScreenButton({text, navigate, endpoint}: Props) {
+export default function HomeScreenButton({text, navigate, endpoint}: HomeScreenButtonProps) {
     return (
         <TouchableOpacity
                 style={styles.button}

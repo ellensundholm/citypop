@@ -1,17 +1,14 @@
 import React, { useState } from 'react'
 import { StyleSheet, View, ActivityIndicator } from 'react-native'
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../navigation/RootStackParamList';
 import Title from './Title';
 import Search from './Search';
+import { CountrySearchProps } from '../types/types';
 
 /**
  * Component for the page for searching for a country. Here you can enter a country name and search.
  */
 
-type Props = NativeStackScreenProps<RootStackParamList, 'CountrySearch'>;
-
-export default function CountrySearch({ route, navigation }: Props) {
+export default function CountrySearch({ route, navigation }: CountrySearchProps) {
 
     const [searching, setSearching] = useState(false);
     const [incorrectCountry, setIncorrectCountry] = useState(false);
