@@ -1,4 +1,4 @@
-import { CityData } from '../components/CountryList'
+import { CityData } from '../components/CityList'
 
 
 type RootStackParamList = {
