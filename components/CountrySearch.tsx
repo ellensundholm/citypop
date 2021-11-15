@@ -62,8 +62,8 @@ export default function CountrySearch({ route, navigation }: Props) {
                             }}
                             style={styles.textinput}
                             placeholder="Enter a country" />
-                        <SearchButton onPress={searchCountry} />
                     </View>
+                    <SearchButton onPress={searchCountry} />
                     {incorrectCountry ?
                         <Text style={styles.incorrectText}>Incorrect input, not a valid country. Try writing the ISO country name.</Text>
                         :
