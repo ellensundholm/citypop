@@ -20,9 +20,8 @@ export default function Title({title}: TitleProps) {
 const styles = StyleSheet.create({
 
     titleContainer: {
-        alignItems: "center",
-        marginBottom: 100
-       
+        marginBottom: 60,
+        marginTop: 80
     },
     title: {
         fontWeight: "bold",

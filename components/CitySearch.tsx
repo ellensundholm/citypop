@@ -36,8 +36,7 @@ export default function CitySearch({route, navigation}: CitySearchProps) {
                 setSearching(false)
             })
             .catch(error => {
-                // TODO: Error-handling.
-                console.log(error)
+                console.error(error)
             })
     }
 
@@ -64,7 +63,7 @@ export default function CitySearch({route, navigation}: CitySearchProps) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
+        justifyContent: "flex-start",
         paddingHorizontal: 15,
         backgroundColor: Colors.primary,
     },

@@ -29,7 +29,7 @@ export default function CityResult({ route, navigation }: CityResultProps) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
+        justifyContent: "flex-start",
         paddingHorizontal: 15,
         backgroundColor: Colors.primary,
     },

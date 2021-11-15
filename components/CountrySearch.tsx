@@ -34,9 +34,10 @@ export default function CountrySearch({ route, navigation }: CountrySearchProps)
                 setSearching(false)
             })
             .catch(error => {
-                // TODO: Error-handling.
+                // TODO: Error-handling
                 console.log(error)
             })
+            
     }
 
     return (
@@ -62,7 +63,7 @@ export default function CountrySearch({ route, navigation }: CountrySearchProps)
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
+        justifyContent: "flex-start",
         paddingHorizontal: 15,
         backgroundColor: Colors.primary,
     },

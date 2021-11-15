@@ -29,7 +29,7 @@ export default function App() {
             fontWeight: 'bold',
           },
         }} initialRouteName="HomeScreen">
-        <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ title: "" }} />
         <Stack.Screen name="CitySearch" component={CitySearch} options={{ title: "CityPop" }} />
         <Stack.Screen name="CountrySearch" component={CountrySearch} options={{ title: "CityPop" }} />
         <Stack.Screen name="CityResult" component={CityResult} options={{ title: "CityPop" }} />
