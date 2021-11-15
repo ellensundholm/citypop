@@ -19,7 +19,7 @@ export default function CountrySearch({ route, navigation }: Props) {
 
 
     const searchCountry = () => {
-
+        
         setSearching(true)
         const code: string = getCode(countryInput)
 
@@ -29,7 +29,7 @@ export default function CountrySearch({ route, navigation }: Props) {
                 if (json.geonames.length == 0) {
                     setIncorrectCountry(true);
                 } else {
-                    navigation.navigate('CountryResult', { cityList: json.geonames })
+                    navigation.navigate('CountryResult', { cityList: json.geonames, country: countryInput})
                 }
                 setSearching(false)
             })

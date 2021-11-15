@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './components/HomeScreen';
 import CitySearch from './components/CitySearch';
 import CountrySearch from './components/CountrySearch';
-import City from './components/City';
+import CityResult from './components/CityResult';
 import CountryResult from './components/CountryResult';
 import { RootStackParamList } from './navigation/RootStackParamList'
 
@@ -31,8 +31,8 @@ export default function App() {
         <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
         <Stack.Screen name="CitySearch" component={CitySearch}/>
         <Stack.Screen name="CountrySearch" component={CountrySearch} options={{ title: "CityPop" }}/>
-        <Stack.Screen name="City" component={City} />
-        <Stack.Screen name="CountryResult" component={CountryResult} />
+        <Stack.Screen name="CityResult" component={CityResult} />
+        <Stack.Screen name="CountryResult" component={CountryResult} options={{ title: "CityPop" }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

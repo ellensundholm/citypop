@@ -7,12 +7,12 @@ import { RootStackParamList } from '../navigation/RootStackParamList'
  * Component for the page for the result after searching a city. The population of this city will appear.
  */
 
-type Props = NativeStackScreenProps<RootStackParamList, 'City'>;
+type Props = NativeStackScreenProps<RootStackParamList, 'CityResult'>;
 
-export default function City({ route, navigation }: Props) {
+export default function CityResult({ route, navigation }: Props) {
     return (
         <View>
-            <Text>City</Text>
+            <Text>CityResult</Text>
         </View>
     )
 }
