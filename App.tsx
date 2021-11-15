@@ -32,7 +32,7 @@ export default function App() {
         <Stack.Screen name="CitySearch" component={CitySearch}/>
         <Stack.Screen name="CountrySearch" component={CountrySearch} options={{ title: "CityPop" }}/>
         <Stack.Screen name="City" component={City} />
-        <Stack.Screen name="CountryResult" component={CountryResult} />
+        <Stack.Screen name="CountryResult" component={CountryResult} options={{ title: "CityPop" }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
