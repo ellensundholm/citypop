@@ -5,7 +5,7 @@ import HomeScreen from './components/HomeScreen';
 import CitySearch from './components/CitySearch';
 import CountrySearch from './components/CountrySearch';
 import City from './components/City';
-import Country from './components/Country';
+import CountryResult from './components/CountryResult';
 import { RootStackParamList } from './navigation/RootStackParamList'
 
 /**
@@ -23,16 +23,16 @@ export default function App() {
             backgroundColor: "#8FBC8F",
           },
           headerShadowVisible: false,
-          headerTintColor: '#fff',
+          headerTintColor: "#2F4F4F",
           headerTitleStyle: {
             fontWeight: 'bold',
           },
         }} initialRouteName="HomeScreen">
         <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="CitySearch" component={CitySearch} />
-        <Stack.Screen name="CountrySearch" component={CountrySearch} />
+        <Stack.Screen name="CitySearch" component={CitySearch}/>
+        <Stack.Screen name="CountrySearch" component={CountrySearch} options={{ title: "CityPop" }}/>
         <Stack.Screen name="City" component={City} />
-        <Stack.Screen name="Country" component={Country} />
+        <Stack.Screen name="CountryResult" component={CountryResult} />
       </Stack.Navigator>
     </NavigationContainer>
   );
