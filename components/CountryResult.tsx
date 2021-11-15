@@ -37,18 +37,4 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         backgroundColor: "#8FBC8F",
     },
-    title: {
-        fontSize: 32,
-    },
-    titleContainer: {
-        alignItems: "center",
-        marginBottom: 100,
-        marginTop: 50
-    },
-    text: {
-        fontWeight: "bold",
-        fontSize: 35,
-        color: "#2F4F4F",
-        textAlign: "center"
-    },
 });
