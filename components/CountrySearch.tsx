@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
-import { StyleSheet, View, Text, TouchableOpacity, TextInput, ActivityIndicator } from 'react-native'
+import { StyleSheet, View, Text, TextInput, ActivityIndicator } from 'react-native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/RootStackParamList';
-import { Icon } from 'react-native-elements';
+
+import Title from './Title';
+import SearchButton from './SearchButton';
 
 /**
  * Component for the page for searching for a country. Here you can enter a country name and search.
@@ -12,14 +14,17 @@ type Props = NativeStackScreenProps<RootStackParamList, 'CountrySearch'>;
 
 export default function CountrySearch({ route, navigation }: Props) {
 
-    const [countryInput, setCountryInput] = useState<string | undefined>(undefined);
+    const [countryInput, setCountryInput] = useState("");
     const [searching, setSearching] = useState(false);
     const [incorrectCountry, setIncorrectCountry] = useState(false);
     const { getCode } = require('country-list');
 
 
+    /* 
+    * Method for saerching for a country using geonames api based on input country name.
+    */
     const searchCountry = () => {
-        
+
         setSearching(true)
         const code: string = getCode(countryInput)
 
@@ -29,7 +34,7 @@ export default function CountrySearch({ route, navigation }: Props) {
                 if (json.geonames.length == 0) {
                     setIncorrectCountry(true);
                 } else {
-                    navigation.navigate('CountryResult', { cityList: json.geonames, country: countryInput})
+                    navigation.navigate('CountryResult', { cityList: json.geonames, country: countryInput })
                 }
                 setSearching(false)
             })
@@ -37,14 +42,12 @@ export default function CountrySearch({ route, navigation }: Props) {
                 // TODO: Error-handling.
                 console.log(error)
             })
-        setCountryInput(undefined)
+        setCountryInput("")
     }
 
     return (
         <View style={styles.container}>
-            <View style={styles.titleContainer}>
-                <Text style={styles.text}>SEARCH BY COUNTRY</Text>
-            </View>
+            <Title title="SEARCH BY COUNTRY"></Title>
             {searching ?
                 <View style={styles.container}>
                     <ActivityIndicator color="#2F4F4F" />
@@ -52,24 +55,20 @@ export default function CountrySearch({ route, navigation }: Props) {
                 :
                 <View>
                     <View style={styles.textinputContainer}>
-                        <TextInput value={countryInput} onChangeText={(text) => {
-                            setCountryInput(text)
-                            setIncorrectCountry(false)
-                        }} style={styles.textinput} placeholder="Enter a country">
-                        </TextInput>
+                        <TextInput value={countryInput}
+                            onChangeText={(text) => {
+                                setCountryInput(text)
+                                setIncorrectCountry(false)
+                            }}
+                            style={styles.textinput}
+                            placeholder="Enter a country" />
                     </View>
+                    <SearchButton onPress={searchCountry} />
                     {incorrectCountry ?
                         <Text style={styles.incorrectText}>Incorrect input, not a valid country. Try writing the ISO country name.</Text>
                         :
-                        <View></View>
+                        <View />
                     }
-                    <View style={styles.buttonContainer}>
-                        <TouchableOpacity
-                            style={styles.searchButton}
-                            onPress={searchCountry}>
-                            <Icon color="#8FBC8F" name="search"></Icon>
-                        </TouchableOpacity>
-                    </View>
                 </View>
             }
         </View>
@@ -83,18 +82,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         backgroundColor: "#8FBC8F",
     },
-    searchButton: {
-        justifyContent: "center",
-        backgroundColor: "#2F4F4F",
-        width: 50,
-        height: 50,
-        borderRadius: 100
-    },
-    buttonText: {
-        fontWeight: "bold",
-        fontSize: 16,
-        color: "#ffff"
-    },
     textinput: {
         backgroundColor: "#ffff",
         padding: 10,
@@ -105,20 +92,6 @@ const styles = StyleSheet.create({
         alignItems: "center",
         borderColor: "#2F4F4F",
         borderWidth: 1
-    },
-    buttonContainer: {
-        alignItems: "center",
-        margin: 10
-    },
-    titleContainer: {
-        alignItems: "center",
-        marginBottom: 100
-    },
-    text: {
-        fontWeight: "bold",
-        fontSize: 35,
-        color: "#2F4F4F",
-        textAlign: "center"
     },
     incorrectText: {
         color: "#8b0000",

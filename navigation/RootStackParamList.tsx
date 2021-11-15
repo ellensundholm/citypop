@@ -6,7 +6,7 @@ type RootStackParamList = {
     CitySearch: undefined;
     CountrySearch: undefined;
     CityResult: { city: string, population: number};
-    CountryResult: { cityList: Array<CityData>, country: string | undefined};
+    CountryResult: { cityList: Array<CityData>, country: string};
 };
 
 
