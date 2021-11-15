@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
-import { StyleSheet, View, Text, TextInput, ActivityIndicator } from 'react-native'
+import { StyleSheet, View, ActivityIndicator } from 'react-native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/RootStackParamList';
-
 import Title from './Title';
-import SearchButton from './SearchButton';
 import Search from './Search';
 
 /**
