@@ -22,7 +22,7 @@ export default function Search({ incorrectInput, placeholder, incorrectText, sea
      * Method for searching based in input state and resetting the input state to empty.
      */
     const searchInput = () => {
-        search(input)
+        search(input.trim())
         setInput("")
     }
 
@@ -37,12 +37,12 @@ export default function Search({ incorrectInput, placeholder, incorrectText, sea
                     style={styles.textinput}
                     placeholder={placeholder} />
             </View>
-            <SearchButton onPress={searchInput} />
             {incorrectInput ?
                 <Text style={styles.incorrectText}>{incorrectText}</Text>
                 :
                 <View />
             }
+            <SearchButton onPress={searchInput} />
         </View>
     )
 }
