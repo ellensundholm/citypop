@@ -74,4 +74,30 @@ To be able to build for ios, you need to have credentials. You can let expo crea
 
 When the build is finished you follow the url and downlaod the file.
 
+---
+
+### **Test the app on a device or simulator**
+
+**Android - apk file**
+
+1. Android Emulator: drag and drop the .apk file into the emulator
+2. Android device: make sure you have Android Platform Tools and adb installed on your computer. Then run the command below:
+    * adb install <name of .apk file>
+    * This will result in the citypop application being installed on your Android device.
+
+---
+
+**iOS simulator**
+
+1. Download the artifact and unzip the tar.gz file and then drag and drop it into your iOS simulator.
+
+
+
+
+
+
+
+
+
+
 
