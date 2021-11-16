@@ -52,12 +52,13 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.textInputBackground,
         padding: 10,
         width: "100%",
-        textAlign: "center",
+        textAlign: "center"
     },
     textinputContainer: {
-        alignItems: "center",
         borderColor: Colors.secondary,
-        borderWidth: 1
+        borderWidth: 1,
+        elevation: 2,
+        marginBottom: 10
     },
     incorrectText: {
         color: Colors.error,
