@@ -33,7 +33,7 @@ export default function CityList({ cityList, toCity }: CityListProps) {
 
 const styles = StyleSheet.create({
     list: {
-        marginBottom: 80,
+        marginBottom: 110,
     },
     button: {
         alignItems: "center",
