@@ -24,17 +24,20 @@ export default function CountrySearch({ route, navigation }: CountrySearchProps)
         setSearching(true);
 
         if (countryInput == "") {
-            
+
             emptyInput()
 
         } else {
 
             const code: string = getCode(countryInput);
 
-            fetch(`http://api.geonames.org/searchJSON?country=${code}&maxRows=10&featureClass=p&username=weknowit`)
+            fetch(`http://api.geonames.org/searchJSON?country=${code}&orderby=population&maxRows=10&featureClass=p&username=weknowit`)
                 .then(response => response.json())
                 .then(json => {
-                    if (json.geonames.length == 0) {
+                    if (!json.geonames) {
+                        throw new Error("Error: Something went wrong with the api call to geonames, check that the username is correct and still valid.");
+                    }
+                    else if (json.geonames.length == 0) {
                         setIncorrectCountry(true);
                         setErrorText("Incorrect input, not a valid country. Try writing the ISO country name.")
                     } else {
@@ -45,6 +48,8 @@ export default function CountrySearch({ route, navigation }: CountrySearchProps)
                 .catch(error => {
                     console.error(error)
                     setSearching(false)
+                    setIncorrectCountry(true);
+                    setErrorText("Something went wrong, please try again.")
                 })
         }
     }
