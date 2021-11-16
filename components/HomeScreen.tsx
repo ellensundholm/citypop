@@ -10,7 +10,6 @@ import { Colors } from '../styles/colors';
  * Component for the homescreen of citypop. Here you can choose to search on city or country.
  */
 
-
 export default function HomeScreen({ route, navigation }: HomeScreenProps) {
 
     /* 
@@ -41,7 +40,7 @@ export default function HomeScreen({ route, navigation }: HomeScreenProps) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
+        justifyContent: "flex-start",
         paddingHorizontal: 15,
         backgroundColor: Colors.primary,
     }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet, Text } from 'react-native'
+import { View, StyleSheet, Text, Platform } from 'react-native'
 import Title from './Title';
 import { CityResultProps } from '../types/types';
 import { Colors } from '../styles/colors';
@@ -18,7 +18,7 @@ export default function CityResult({ route, navigation }: CityResultProps) {
     return (
         <View style={styles.container}>
             <Title title={route.params.city.toUpperCase()} />
-            <View style={styles.populationContainer}>
+            <View style={[styles.populationContainer, styles.shadow]}>
                 <Text style={styles.textColor}>POPULATION</Text>
                 <Text style={[styles.populationText, styles.textColor]}>{spaceSeparator(route.params.population)}</Text>
             </View>
@@ -29,15 +29,16 @@ export default function CityResult({ route, navigation }: CityResultProps) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
+        justifyContent: "flex-start",
         paddingHorizontal: 15,
         backgroundColor: Colors.primary,
     },
     populationContainer: {
         alignItems: "center",
-        borderWidth: 1,
+        borderWidth: 2,
         borderColor: Colors.secondary,
-        padding: 5
+        padding: 5,
+        backgroundColor: Colors.primary,
     },
     populationText: {
         margin: 20,
@@ -46,6 +47,18 @@ const styles = StyleSheet.create({
     },
     textColor: {
         color: Colors.secondary
+    },
+    shadow: {
+        ...Platform.select({
+            ios: {
+                shadowColor: Colors.secondary,
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity: 0.2,
+            },
+            android: {
+                elevation: 3
+            },
+          }),
     }
 });
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, StyleSheet, TouchableHighlight } from 'react-native'
+import { Text, StyleSheet, TouchableHighlight, Platform } from 'react-native'
 import { Colors } from '../styles/colors';
 import { HomeScreenButtonProps } from '../types/types';
 
@@ -15,7 +15,7 @@ export default function HomeScreenButton({ text, navigate, endpoint }: HomeScree
     return (
         <TouchableHighlight
             underlayColor={Colors.buttonUnderlay}
-            style={styles.button}
+            style={[styles.button, styles.shadow]}
             onPress={() => navigate(endpoint)}>
             <Text style={styles.buttonText}>{text}</Text>
         </TouchableHighlight>
@@ -28,10 +28,23 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.secondary,
         padding: 15,
         margin: 5,
+        borderRadius: 3, 
     },
     buttonText: {
         fontWeight: "bold",
         fontSize: 16,
         color: Colors.buttonText
-    }
+    },
+    shadow: {
+        ...Platform.select({
+            ios: {
+                shadowColor: Colors.secondary,
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity: 0.2,
+            },
+            android: {
+                elevation: 3
+            },
+    })},
+    
 });
