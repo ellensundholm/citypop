@@ -16,6 +16,7 @@ export default function CitySearch({route, navigation}: CitySearchProps) {
     
     const [searching, setSearching] = useState(false);
     const [incorrectCity, setIncorrectCity] = useState(false);
+    const [errorText, setErrorText] = useState("");
 
     /* 
     * Method for saerching for a city using geonames api based on input city name.
@@ -25,19 +26,36 @@ export default function CitySearch({route, navigation}: CitySearchProps) {
 
         setSearching(true)
 
-        fetch(`http://api.geonames.org/searchJSON?name_equals=${cityInput}&featureClass=p&username=weknowit`)
+        if (cityInput == "") {
+            
+            emptyInput()
+
+        } else {
+            
+            fetch(`http://api.geonames.org/searchJSON?name_equals=${cityInput}&featureClass=p&username=weknowit`)
             .then(response => response.json())
             .then(json => {
                 if (json.geonames.length == 0) {
                     setIncorrectCity(true);
                 } else {
-                    navigation.navigate('CityResult', { city: json.geonames[0].name, population: json.geonames[0].population })
+                    navigation.navigate('CityResult', { city: json.geonames[0].name, population: json.geonames[0].population });
                 }
-                setSearching(false)
+                setSearching(false);
             })
             .catch(error => {
-                console.error(error)
-            })
+                console.error(error);
+                setSearching(false);
+            });
+        }
+    }
+
+    /*  
+    * Sets the parameters to the correct values if input is empty.
+    */
+    const emptyInput = () => {
+        setIncorrectCity(true);
+        setErrorText("You must enter a city.");
+        setSearching(false);    
     }
 
     return (
