@@ -36,6 +36,7 @@ export default function CountrySearch({ route, navigation }: CountrySearchProps)
 
             const code: string = getCode(countryInput);
 
+            // Change maxRows value to decide how many cities that will show when searching on a country.
             fetch(`http://api.geonames.org/searchJSON?country=${code}&orderby=population&maxRows=10&featureClass=p&username=weknowit`)
                 .then(response => response.json())
                 .then(json => {
