@@ -14,7 +14,12 @@ import { Colors } from '../styles/colors';
  */
 export default function CityResult({ route, navigation }: CityResultProps) {
 
-    /* Method for converting a number to a string with space as thousand separator. */
+    /**
+     * Method for converting a number to a string with space as thousand separator.
+     * 
+     * @param {number} num the number to convert
+     * @returns {string}
+     */
     const spaceSeparator = (num: number) => {
         return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
     }
