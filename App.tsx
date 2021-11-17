@@ -9,12 +9,15 @@ import CountryResult from './components/CountryResult';
 import { RootStackParamList } from './navigation/RootStackParamList'
 import { Colors } from './styles/colors';
 
-/**
- * The app-component, the navigation and different screens located here.
- */
+
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
+/**
+ * The App component of citypop. Creates navigation for the different screens.
+ * 
+ * @returns {App}
+ */
 export default function App() {
   return (
     <NavigationContainer>
@@ -29,7 +32,7 @@ export default function App() {
             fontWeight: 'bold',
           },
         }} initialRouteName="HomeScreen">
-        <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ title: "" }} />
         <Stack.Screen name="CitySearch" component={CitySearch} options={{ title: "CityPop" }} />
         <Stack.Screen name="CountrySearch" component={CountrySearch} options={{ title: "CityPop" }} />
         <Stack.Screen name="CityResult" component={CityResult} options={{ title: "CityPop" }} />

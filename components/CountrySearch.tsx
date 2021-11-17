@@ -6,37 +6,66 @@ import { CountrySearchProps } from '../types/types';
 import { Colors } from '../styles/colors';
 
 /**
- * Component for the page for searching for a country. Here you can enter a country name and search.
+ * Component for the page for searching for cities of a country. 
+ * 
+ * @component
+ * @prop {RouteProp<RootStackParamList, "CountrySearch">} route 
+ * @prop {NativeStackNavigationProp<RootStackParamList, "CountrySearch">} navigation used to navigate to  new screen
+ * @returns {CountrySearch}
  */
-
 export default function CountrySearch({ route, navigation }: CountrySearchProps) {
 
     const [searching, setSearching] = useState(false);
     const [incorrectCountry, setIncorrectCountry] = useState(false);
+    const [errorText, setErrorText] = useState("");
     const { getCode } = require('country-list');
 
-    /* 
-    * Method for saerching for a country using geonames api based on input country name.
-    */
+    /**
+     * searches for a country using geonames api based on input country name.
+     * @param {string} countryInput country to search for
+     */
     const searchCountry = (countryInput: string) => {
 
-        setSearching(true)
-        const code: string = getCode(countryInput)
+        setSearching(true);
 
-        fetch(`http://api.geonames.org/searchJSON?country=${code}&maxRows=10&featureClass=p&username=weknowit`)
-            .then(response => response.json())
-            .then(json => {
-                if (json.geonames.length == 0) {
+        if (countryInput == "") {
+
+            emptyInput()
+
+        } else {
+
+            const code: string = getCode(countryInput);
+
+            fetch(`http://api.geonames.org/searchJSON?country=${code}&orderby=population&maxRows=10&featureClass=p&username=weknowit`)
+                .then(response => response.json())
+                .then(json => {
+                    if (!json.geonames) {
+                        throw new Error("Error: Something went wrong with the api call to geonames, check that the username is correct and still valid.");
+                    }
+                    else if (json.geonames.length == 0) {
+                        setIncorrectCountry(true);
+                        setErrorText("Incorrect input, not a valid country. Try writing the ISO country name.")
+                    } else {
+                        navigation.navigate('CountryResult', { cityList: json.geonames, country: countryInput })
+                    }
+                    setSearching(false)
+                })
+                .catch(error => {
+                    console.error(error)
+                    setSearching(false)
                     setIncorrectCountry(true);
-                } else {
-                    navigation.navigate('CountryResult', { cityList: json.geonames, country: countryInput })
-                }
-                setSearching(false)
-            })
-            .catch(error => {
-                // TODO: Error-handling.
-                console.log(error)
-            })
+                    setErrorText("Something went wrong, please try again.")
+                })
+        }
+    }
+
+    /**
+     * Sets the parameters to the correct values if input is empty.
+     */
+    const emptyInput = () => {
+        setErrorText("You must enter a country.")
+        setIncorrectCountry(true);
+        setSearching(false);
     }
 
     return (
@@ -44,13 +73,13 @@ export default function CountrySearch({ route, navigation }: CountrySearchProps)
             <Title title="SEARCH BY COUNTRY"></Title>
             {searching ?
                 <View style={styles.container}>
-                    <ActivityIndicator color="#2F4F4F" />
+                    <ActivityIndicator size="large" color={Colors.secondary} />
                 </View>
                 :
                 <Search
                     placeholder="Enter a country"
                     incorrectInput={incorrectCountry}
-                    incorrectText="Incorrect input, not a valid country. Try writing the ISO country name."
+                    incorrectText={errorText}
                     search={searchCountry}
                     setIncorrectInput={setIncorrectCountry}
                 />
@@ -62,7 +91,7 @@ export default function CountrySearch({ route, navigation }: CountrySearchProps)
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
+        justifyContent: "flex-start",
         paddingHorizontal: 15,
         backgroundColor: Colors.primary,
     },

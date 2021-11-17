@@ -6,16 +6,21 @@ import { CountryResultProps } from '../types/types';
 import { Colors } from '../styles/colors';
 
 /**
-* Component for the page for the result after searching a country. The largest cities of this country will appear. 
-* Props: 
-* route: RouteProp<RootStackParamList, "CountryResult">
-* navigation: NativeStackNavigationProp<RootStackParamList, "CountryResult">
-*/
-
+ * Component for the page for the result after searching a country. The largest cities of this country will appear. 
+ * 
+ * @component
+ * @prop {RouteProp<RootStackParamList, "CountryResult">} route route to get input props from
+ * @prop {NativeStackNavigationProp<RootStackParamList, "CountryResult">} navigation used to navigate to  new screen
+ * @returns {CountryResult}
+ */
 export default function CountryResult({ route, navigation }: CountryResultProps) {
+
     /**
-    * Function for navigating to the CityResult component when a city button in CityList is pressed.
-    */
+     * navigating to the CityResult component when a city button in CityList is pressed.
+     * 
+     * @param {string} city name of city
+     * @param {number} population the population that the city has
+     */
     const navigateToCity = (city: string, population: number) => {
         navigation.navigate('CityResult', { city: city, population: population })
     }
@@ -31,7 +36,7 @@ export default function CountryResult({ route, navigation }: CountryResultProps)
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
+        justifyContent: "flex-start",
         paddingHorizontal: 15,
         backgroundColor: Colors.primary,
     },

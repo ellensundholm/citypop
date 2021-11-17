@@ -4,16 +4,16 @@ import { Colors } from '../styles/colors';
 import { SearchProps } from '../types/types';
 import SearchButton from './SearchButton';
 
-/* 
-* Search component. Handle textinput on search pages.
-* Props:
-* incorrectInput:  showing if input is correct or not (boolean)
-* incorrectText: text to be shown if incorrect input (string)
-* placeholder: placeholder in TextInput (string
-* search: function for searching for the input ((input: string) => void)
-* setIncorrectInput: setter for incorrectInput  ((b: boolean) => void)
-*/
 
+/**
+ * 
+ * @prop {boolean} incorrectInput bool if incorrect input or not
+ * @prop {string} placeholder the text to have as aplaceholder in TextInput
+ * @prop {string} incorrectText the text to show when incorrect input
+ * @prop {(input: string) => void} search function to search for input
+ * @prop {(b: boolean) => void} setIncorrectInput sets the input to incorrect 
+ * @returns {Search}
+ */
 export default function Search({ incorrectInput, placeholder, incorrectText, search, setIncorrectInput }: SearchProps) {
 
     const [input, setInput] = useState("");
@@ -22,7 +22,7 @@ export default function Search({ incorrectInput, placeholder, incorrectText, sea
      * Method for searching based in input state and resetting the input state to empty.
      */
     const searchInput = () => {
-        search(input)
+        search(input.trim())
         setInput("")
     }
 
@@ -37,12 +37,12 @@ export default function Search({ incorrectInput, placeholder, incorrectText, sea
                     style={styles.textinput}
                     placeholder={placeholder} />
             </View>
-            <SearchButton onPress={searchInput} />
             {incorrectInput ?
                 <Text style={styles.incorrectText}>{incorrectText}</Text>
                 :
                 <View />
             }
+            <SearchButton onPress={searchInput} />
         </View>
     )
 }
@@ -52,12 +52,13 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.textInputBackground,
         padding: 10,
         width: "100%",
-        textAlign: "center",
+        textAlign: "center"
     },
     textinputContainer: {
-        alignItems: "center",
         borderColor: Colors.secondary,
-        borderWidth: 1
+        borderWidth: 1,
+        elevation: 2,
+        marginBottom: 10
     },
     incorrectText: {
         color: Colors.error,
