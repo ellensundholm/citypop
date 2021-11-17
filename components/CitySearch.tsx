@@ -7,21 +7,23 @@ import { Colors } from '../styles/colors';
 
 /**
  * Component for the page for searching for a city. 
- * Props:
- * route: RouteProp<RootStackParamList, "CitySearch">
- * navigation: NativeStackNavigationProp<RootStackParamList, "CitySearch">
+ * 
+ * @component
+ * @prop {RouteProp<RootStackParamList, "CitySearch">} route 
+ * @prop {NativeStackNavigationProp<RootStackParamList, "CitySearch">} navigation used to navigate to  new screen
+ * @returns {CitySearch}
  */
-
-export default function CitySearch({ route, navigation }: CitySearchProps) {
-
+export default function CitySearch({route, navigation}: CitySearchProps) {
+    
     const [searching, setSearching] = useState(false);
     const [incorrectCity, setIncorrectCity] = useState(false);
     const [errorText, setErrorText] = useState("");
 
-    /* 
-    * Method for saerching for a city using geonames api based on input city name.
-    * cityInput: the name of the city to search for (string)
-    */
+    /**
+     *  Method for searching for a city using geonames api based on input city name.
+     * 
+     * @param {string} cityInput input city 
+     */
     const searchCity = (cityInput: string) => {
 
         setSearching(true)

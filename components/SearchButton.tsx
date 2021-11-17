@@ -4,11 +4,13 @@ import { Icon } from 'react-native-elements';
 import { Colors } from '../styles/colors';
 import { SearchButtonProps } from '../types/types';
 
-/* 
-* SearchButton component.
-* onPress: function to be called when pressed (onPress: () => void)
-*/
 
+/**
+ *  Component for search button.
+ * 
+ * @prop {() => void} onPress functions that is called when the button is pressed
+ * @returns {SearchButton}
+ */
 export default function SearchButton({ onPress }: SearchButtonProps) {
     return (
         <View style={styles.buttonContainer}>
@@ -44,5 +46,6 @@ const styles = StyleSheet.create({
             android: {
                 elevation: 3
             },
-    })},
+        })
+    },
 });

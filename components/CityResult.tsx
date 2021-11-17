@@ -6,11 +6,20 @@ import { Colors } from '../styles/colors';
 
 /**
  * Component for the page for the result after searching a city. The population of this city will appear.
+ * 
+ * @component
+ * @prop {RouteProp<RootStackParamList, "CityResult">} route route to get input props from
+ * @prop {NativeStackNavigationProp<RootStackParamList, "CityResult">} navigation used to navigate to  new screen
+ * @returns {CityResult}
  */
-
 export default function CityResult({ route, navigation }: CityResultProps) {
 
-    /* Method for converting a number to a string with space as thousand separator. */
+    /**
+     * Method for converting a number to a string with space as thousand separator.
+     * 
+     * @param {number} num the number to convert
+     * @returns {string}
+     */
     const spaceSeparator = (num: number) => {
         return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
     }
