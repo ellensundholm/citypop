@@ -15,19 +15,19 @@ To start developing on this project first clone this project and install the nec
 > * cd citypop
 > * npm install
 
-Expo client enables you to work with your code in your editor and see it the project in your phone using the Expo Client app.
+Expo client enables you to work with your code in your editor and see it the project in your phone using the Expo Go app.
 
 To run this project with Expo Client: 
 
-> 1. Download the "Expo Client" app from the Play Store or App Store.
+> 1. Download the "Expo Go" app from the Play Store or App Store.
 > 2. Start your project with Expo
 >    * Install the CLI: npm i -g expo-cli
 >    * Start project: expo start
-> 3. Open project in Expo Client app
->    * Scan the QR code i the terminal to open the project in Expo Client
+> 3. Open project in Expo Go app
+>    * Scan the QR code i the terminal to open the project in Expo Go
 
 You can now start exploring, update and debug the app. 
-Any changes to the code will update the project in Expo Client app.
+Any changes to the code will update the project in Expo Go app.
 
 ---
 
