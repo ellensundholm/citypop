@@ -8,13 +8,18 @@ import { Colors } from '../styles/colors';
 
 /**
  * Component for the homescreen of citypop. Here you can choose to search on city or country.
+ * 
+ * @component
+ * @prop {RouteProp<RootStackParamList, "HomeScreen">} route 
+ * @prop {NativeStackNavigationProp<RootStackParamList, "HomeScreen">} navigation
+ * @returns {HomeScreen}
  */
-
 export default function HomeScreen({ route, navigation }: HomeScreenProps) {
 
-    /* 
+    /**
      * Function for navigating to new screen based on which button pressed.
-     * endpoint: screen to navigate to 
+     * 
+     * @param {keyof RootStackParamList} endpoint The new screen to navigate to, string
      */
     const navigateTo = (endpoint: keyof RootStackParamList) => {
         navigation.navigate(endpoint)
@@ -29,9 +34,9 @@ export default function HomeScreen({ route, navigation }: HomeScreenProps) {
                 endpoint="CountrySearch"
             />
             <HomeScreenButton
-            text="SEARCH BY CITY"
-            navigate={navigateTo}
-            endpoint="CitySearch"
+                text="SEARCH BY CITY"
+                navigate={navigateTo}
+                endpoint="CitySearch"
             />
         </View>
     )

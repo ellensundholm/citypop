@@ -3,13 +3,13 @@ import { StyleSheet, Text, FlatList, ListRenderItem, TouchableHighlight, Platfor
 import { Colors } from '../styles/colors';
 import { CityData, CityListProps } from '../types/types';
 
-/* 
-* Component for the list of cities when the user searched a country.
-* Props:
-* cityList: CityData[]
-* toCity: (city: string, population: number) => void
-*/
-
+/**
+ * Component for the list of cities when the user searched a country.
+ * 
+ * @prop {CityData[]} cityList list with data of cities
+ * @prop {(city: string, population: number) => void} toCity navigate to city
+ * @returns {CityList}
+ */
 export default function CityList({ cityList, toCity }: CityListProps) {
 
     const renderCityItem: ListRenderItem<CityData> = ({ item }) => (
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.secondary,
         padding: 15,
         margin: 5,
-        borderRadius: 3, 
+        borderRadius: 3,
     },
     listText: {
         color: Colors.buttonText,
@@ -57,6 +57,6 @@ const styles = StyleSheet.create({
             android: {
                 elevation: 3
             },
-          }),
+        }),
     }
 })

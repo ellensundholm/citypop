@@ -9,12 +9,15 @@ import CountryResult from './components/CountryResult';
 import { RootStackParamList } from './navigation/RootStackParamList'
 import { Colors } from './styles/colors';
 
-/**
- * The app-component, the navigation and different screens located here.
- */
+
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
+/**
+ * The App component of citypop. Creates navigation for the different screens.
+ * 
+ * @returns {App}
+ */
 export default function App() {
   return (
     <NavigationContainer>

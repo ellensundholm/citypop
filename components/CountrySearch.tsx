@@ -6,9 +6,13 @@ import { CountrySearchProps } from '../types/types';
 import { Colors } from '../styles/colors';
 
 /**
- * Component for the page for searching for a country. Here you can enter a country name and search.
+ * Component for the page for searching for cities of a country. 
+ * 
+ * @component
+ * @prop {RouteProp<RootStackParamList, "CountrySearch">} route 
+ * @prop {NativeStackNavigationProp<RootStackParamList, "CountrySearch">} navigation used to navigate to  new screen
+ * @returns {CountrySearch}
  */
-
 export default function CountrySearch({ route, navigation }: CountrySearchProps) {
 
     const [searching, setSearching] = useState(false);
@@ -16,9 +20,10 @@ export default function CountrySearch({ route, navigation }: CountrySearchProps)
     const [errorText, setErrorText] = useState("");
     const { getCode } = require('country-list');
 
-    /* 
-    * Method for saerching for a country using geonames api based on input country name.
-    */
+    /**
+     * searches for a country using geonames api based on input country name.
+     * @param {string} countryInput country to search for
+     */
     const searchCountry = (countryInput: string) => {
 
         setSearching(true);
@@ -54,15 +59,13 @@ export default function CountrySearch({ route, navigation }: CountrySearchProps)
         }
     }
 
-    /*  
-    * Sets the parameters to the correct values if input is empty.
-    */
+    /**
+     * Sets the parameters to the correct values if input is empty.
+     */
     const emptyInput = () => {
-
         setErrorText("You must enter a country.")
         setIncorrectCountry(true);
         setSearching(false);
-
     }
 
     return (

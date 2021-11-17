@@ -3,14 +3,15 @@ import { Text, StyleSheet, TouchableHighlight, Platform } from 'react-native'
 import { Colors } from '../styles/colors';
 import { HomeScreenButtonProps } from '../types/types';
 
-/* 
-Component for the HomeScreenButton.
-Props:
-text: the text inside the button (string)
-navigate: function for navigating to new screen ((endpoint: keyof RootStackParamList) => void)
-endpoint: screen to navigate to (string)
-*/
-
+/**
+ * Component for the HomeScreenButton.
+ * 
+ * @component
+ * @prop {string} text text inside button
+ * @prop {(endpoint: keyof RootStackParamList) => void} navigate function for navigating to new screen
+ * @prop {keyof RootStackParamList} endpoint screen to navigate to
+ * @returns {HomeScreenButton}
+ */
 export default function HomeScreenButton({ text, navigate, endpoint }: HomeScreenButtonProps) {
     return (
         <TouchableHighlight

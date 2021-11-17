@@ -4,16 +4,16 @@ import { Colors } from '../styles/colors';
 import { SearchProps } from '../types/types';
 import SearchButton from './SearchButton';
 
-/* 
-* Search component. Handle textinput on search pages.
-* Props:
-* incorrectInput:  showing if input is correct or not (boolean)
-* incorrectText: text to be shown if incorrect input (string)
-* placeholder: placeholder in TextInput (string
-* search: function for searching for the input ((input: string) => void)
-* setIncorrectInput: setter for incorrectInput  ((b: boolean) => void)
-*/
 
+/**
+ * 
+ * @prop {boolean} incorrectInput bool if incorrect input or not
+ * @prop {string} placeholder the text to have as aplaceholder in TextInput
+ * @prop {string} incorrectText the text to show when incorrect input
+ * @prop {(input: string) => void} search function to search for input
+ * @prop {(b: boolean) => void} setIncorrectInput sets the input to incorrect 
+ * @returns {Search}
+ */
 export default function Search({ incorrectInput, placeholder, incorrectText, search, setIncorrectInput }: SearchProps) {
 
     const [input, setInput] = useState("");
