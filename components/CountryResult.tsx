@@ -27,7 +27,7 @@ export default function CountryResult({ route, navigation }: CountryResultProps)
 
     return (
         <View style={styles.container}>
-            <Title title={route.params.country}></Title>
+            <Title title={route.params.country.toUpperCase()}></Title>
             <CityList cityList={route.params.cityList} toCity={navigateToCity}></CityList>
         </View>
     )
