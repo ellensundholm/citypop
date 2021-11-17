@@ -46,7 +46,7 @@ You can either choose to build using APK or Android App Bundle. See commands bel
 > 1. Build APK
 >    * expo build:android -t apk
 > 2. Build Android App Bundle
->    * expo build:ios
+>    * expo build:android -t app-bundle
 
 The first time creating a build will require the creation of a keystore. You will be asked to either upload a keystore or let expo create one for you.
 
@@ -82,7 +82,7 @@ When the build is finished you follow the url and downlaod the file.
 **Android - apk file**
 
 > 1. Android Emulator: drag and drop the .apk file into the emulator
-> 2. Android device: make sure you have Android Platform Tools and adb installed on your computer. Then run the command below:
+> 2. Android device: make sure you have Android Platform Tools and adb installed on your computer as well as USB debugging allowed on your device. Then run the command below:
 >    * adb install <name of .apk file>
 >    * This will result in the citypop application being installed on your Android device.
 
